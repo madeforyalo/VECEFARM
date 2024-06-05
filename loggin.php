@@ -2,7 +2,8 @@
   $nombre=$_GET['usuario'];
   $contra=$_GET['contra'];
 
-  require "./conect.php";
+  require "funciones.php";
+  $conn = conectar();
   
   $sql="SELECT * FROM empleados where emp_usu='$nombre'";
 

@@ -24,7 +24,7 @@
       
     <main class="d-flex flex-nowrap">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-          <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefar.png" alt="" style="width: 240px;"></a></span>
+          <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefarm.png" alt="" style="width: 240px;"></a></span>
 
 
         <hr>
@@ -117,7 +117,8 @@
                       <div class="col-3" style="width: unset;"><input type=number name=cant placeholder="Cantidad" required></div>
                   </div>
                   <?php
-            require "conect.php";
+            require "funciones.php";
+            $conn = conectar();
             $pro="SELECT * FROM productos";
             $res=mysqli_query($conn,$pro);
 

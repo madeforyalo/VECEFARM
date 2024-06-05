@@ -28,7 +28,7 @@ else{?>
        
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
              
-          <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefar.png" alt="" style="width: 240px;"></a></span>
+          <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefarm.png" alt="" style="width: 240px;"></a></span>
 
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -126,7 +126,7 @@ else{?>
     
 
 if(isset($_GET['modif'])){
-require "conect.php";
+require "funciones.php";
 require "modif.php";
 $dat=$_GET['dato'];
 modif_prod($dat);
@@ -173,8 +173,8 @@ $sql="SELECT * FROM productos
 INNER JOIN laboratorios on productos.lab_id=laboratorios.lab_id
 INNER JOIN droga on productos.droga_id=droga.droga_id order by prod_id asc";
 }        
-require "conect.php";
-
+require "funciones.php";
+$conn = conectar();
 $resulset=mysqli_query($conn,$sql);
  if(mysqli_num_rows($resulset)>0){
  

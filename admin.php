@@ -24,7 +24,7 @@
   <body>
   <main class="d-flex flex-nowrap">
       <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-        <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefar.png" alt="" style="width: 240px;"></a></span>
+        <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefarm.png" alt="" style="width: 240px;"></a></span>
 
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">

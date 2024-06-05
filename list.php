@@ -26,7 +26,7 @@ else{?>
   
     <main class="d-flex flex-nowrap">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-          <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefar.png" alt="" style="width: 240px;"></a></span>
+          <span class="fs-4"><a href="admin.php"><img src="imagenes/vecefarm.png" alt="" style="width: 240px;"></a></span>
 
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -116,7 +116,7 @@ else{?>
 
 
 <?php
-require "conect.php";
+require "funciones.php";
 if(isset($_GET['modif'])){
 require "modif.php";
 $dat=$_GET['dato'];
@@ -173,6 +173,7 @@ INNER JOIN empleados on lotes.emp_id=empleados.emp_id
 INNER JOIN laboratorios on productos.lab_id=laboratorios.lab_id
 INNER JOIN droga on productos.droga_id=droga.droga_id order by lote_id asc";
 }
+$conn = conectar();
 $resulset=mysqli_query($conn,$sql);
  if(mysqli_num_rows($resulset)>0){
  

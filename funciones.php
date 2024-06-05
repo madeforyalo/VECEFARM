@@ -1,14 +1,14 @@
 <?php
-session_start();
 
 function conectar() // Función conectar BD
 {
     $servidorBD = "localhost";
     $usuarioBD = "root";
     $passBD = "";
-    $nombreBD = "vecefarm";
+    $nombreBD = "farmacia";
 
     $conn = mysqli_connect($servidorBD, $usuarioBD, $passBD, $nombreBD) or die("No se pudo conectar");
+    return $conn; 
 };
 
 function act_dro() // Actualizacion Drogas Admin

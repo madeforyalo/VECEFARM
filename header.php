@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>VECEFAR</title>
+        <title>VECEFARM</title>
 
             <link rel="stylesheet" href="css/bootstrap.min.css">
             <link rel="stylesheet" href="css/style.css">
@@ -69,5 +69,6 @@
             <!-- Custom styles for this template -->
             <link href="https://getbootstrap.com/docs/5.3/examples/sidebars/sidebars.css" rel="stylesheet">
             <style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style>
+            <link rel="icon" href="imagenes/v.png">
     </head>
 </html>
