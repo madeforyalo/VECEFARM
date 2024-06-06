@@ -132,39 +132,22 @@ session_start();
       } ?>
     </div>
 
-    <form action=loggin.php class="needs-validation" novalidate>
+    <form action=enviaMail.php class="needs-validation" novalidate>
       <img class="mb-4" src="imagenes/vecefarm.png" alt="" width="300" height="auto">
 
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="usuario" required>
-        <label for="floatingInput">Usuario</label>
+      <div class="form-floating mb-4">
+        <input type="email" class="form-control" id="floatingInput" placeholder="EMAIL" name="mail" required>
+        <label for="floatingInput">E-MAIL</label>
         <div class="valid-feedback">
           Ok
         </div>
         <div class="invalid-feedback">
-          ingrese usuario
+          ingrese mail valido
         </div>
       </div>
-      <?php
       
-      ?>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contra" required>
-        <label for="floatingPassword">Password</label>
-        <div class="valid-feedback">
-          Ok
-        </div>
-        <div class="invalid-feedback">
-          ingrese contraseña
-        </div>
-      </div>
-      <?php
-      
-      ?>
-      <div class="form-check text-start my-3">
-        <a href="olvidePass.php" class="link-opacity-100-hover">Olvidé mi contraseña</a>
-      </div>
-      <button class="btn btn-primary w-100 py-2" type="submit" value="Loggin" name="aceptar">Ingresar</button>
+      <button class="btn btn-primary w-100 py-2 mb-2" type="submit" name="aceptar">Enviar</button>
+      <a href="index.php" class="btn btn-primary w-50 py-2" style="margin-left: 25%;">Volver</a>
     </form>
 
   </main>
