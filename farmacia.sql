@@ -2,6 +2,7 @@ create database farmacia;
 drop database farmacia;
 use farmacia;
 
+drop table rol CASCADE;
 create table rol(
 rol_id int(1) primary key,
 rol_desc varchar(20)
@@ -10,19 +11,28 @@ rol_desc varchar(20)
 insert into rol value (1,"admin"),(2,"empleado");
 select*from rol;
 
+drop table empleados CASCADE;
+
+
 create table empleados(
-emp_id int(4) primary key,
+emp_id int primary key auto_increment,
 emp_nom varchar(40),
 emp_ape varchar (40),
 emp_dni int(8),
 emp_tel varchar(12),
+emp_email VARCHAR(255) NOT NULL DEFAULT 'example@example.com',
 emp_usu varchar(20),
 emp_pass varchar (20),
 rol_id int(1),
 foreign key (rol_id) references rol (rol_id)
 );
 select*from empleados;
-insert into empleados value(100,"fernando","torres",35136932,1131510849,"nando90","delfina",1);
+SELECT * FROM empleados where emp_email='mail1@example.com';
+delete from empleados where emp_id=200;
+insert into empleados value(null,"fernando","torres",35136932,1131510849,"mail1@example.com","nando90","delfina",1);
+insert into empleados value(null,"juan","lopez",35136932,1131510849,"mail2@example.com","juan","1234",2);
+
+SELECT * FROM empleados where emp_usu='nando90';
 
  create table laboratorios(
  lab_id int (5) primary key,
