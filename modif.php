@@ -1,6 +1,6 @@
 <?php
 function modif($dato){
-require "conect.php";    
+require_once "funciones.php";  // cambie el   require "conect.php"; 
 $sql="SELECT * FROM lotes
 INNER JOIN productos on lotes.prod_id=productos.prod_id
 INNER JOIN empleados on lotes.emp_id=empleados.emp_id
@@ -35,7 +35,7 @@ if(mysqli_num_rows($res)>0){
          <tr><th>Producto</th><td><?php echo $fila["prod_marca"] ?>, <?php echo $fila["dro_componentes"] ?>   <?php echo $fila["dro_dosis"] ?></td>
          <td><select name="producto">
                                                 <?php
-                                          require "conect.php";
+                                          require_once "funciones.php";
                                           $pro="SELECT * FROM productos INNER JOIN droga on productos.droga_id=droga.droga_id";
                                         
                                           $res=mysqli_query($conn,$pro);
@@ -75,7 +75,7 @@ if(mysqli_num_rows($res)>0){
 } 
 
 function modif_dro($dato){
-require "conect.php";     
+  require_once "funciones.php";     
 $sql="SELECT*FROM droga WHERE droga_id='$dato'";
 
 $res=mysqli_query($conn,$sql);
@@ -119,7 +119,7 @@ if(mysqli_num_rows($res)>0){?>
 }
 
 function modif_prod($dato){
-require "conect.php";     
+  require_once "funciones.php";     
 $sql="SELECT*FROM productos 
 INNER JOIN laboratorios on productos.lab_id=laboratorios.lab_id
 INNER JOIN droga on productos.droga_id=droga.droga_id
@@ -155,7 +155,7 @@ if(mysqli_num_rows($res)>0){ ?>
          <tr><th>droga</th><td> <?php echo $fila["dro_componentes"] ?>   <?php echo $fila["dro_dosis"] ?></td>
          <td><select name="dro">
                                                 <?php
-                                          require "conect.php";
+                                          require_once "funciones.php";
                                           $pro="SELECT * FROM  droga  ";
                                         
                                           $res=mysqli_query($conn,$pro);
@@ -181,7 +181,7 @@ if(mysqli_num_rows($res)>0){ ?>
 
 <?php
 
-require "conect.php";     
+require_once "funciones.php";     
 $sql="SELECT*FROM productos 
 INNER JOIN laboratorios on productos.lab_id=laboratorios.lab_id
 INNER JOIN droga on productos.droga_id=droga.droga_id
@@ -193,7 +193,7 @@ if(mysqli_num_rows($res)>0){ ?>
          <tr><th>Laboratorios</th><td><?php echo $fila["lab_nombre"] ?> </td>
          <td><select name="lab">
                                                      <?php
-                                          require "conect.php";
+                                          require_once "funciones.php";
                                           $la="SELECT * FROM  laboratorios";
                                         
                                           $lab=mysqli_query($conn,$la);
@@ -233,7 +233,7 @@ if(mysqli_num_rows($res)>0){ ?>
 }
 
 function modif_lab($id){
-   require "conect.php";     
+  require_once "funciones.php";     
 $sql="SELECT*FROM laboratorios WHERE lab_id='$id'";
 
 $res=mysqli_query($conn,$sql);
@@ -268,7 +268,7 @@ if(mysqli_num_rows($res)>0){?>
 }
 
 function modif_emp($id){
-   require "conect.php"; 
+  require_once "funciones.php"; 
    
 $sql="SELECT*FROM empleados WHERE emp_id='$id'";
 
@@ -318,7 +318,7 @@ if(mysqli_num_rows($res)>0){ ?>
          <tr><th>Tipo de Usuario</th><td> <?php echo $fila["rol_desc"] ?></td>
          <td><select name="rol">
                                                 <?php
-                                          require "conect.php";
+                                          require_once "funciones.php";
                                           $pro="SELECT * FROM rol";
                                         
                                           $res=mysqli_query($conn,$pro);
