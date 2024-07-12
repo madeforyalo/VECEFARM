@@ -1,5 +1,5 @@
 create database farmacia;
-drop database farmacia;
+-- drop database farmacia;
 use farmacia;
 
 drop table rol CASCADE;
@@ -11,7 +11,7 @@ rol_desc varchar(20)
 insert into rol value (1,"admin"),(2,"empleado");
 select*from rol;
 
-drop table empleados CASCADE;
+-- drop table empleados CASCADE;
 
 
 create table empleados(
@@ -28,7 +28,7 @@ foreign key (rol_id) references rol (rol_id)
 );
 select*from empleados;
 SELECT * FROM empleados where emp_email='mail1@example.com';
-delete from empleados where emp_id=200;
+ -- delete from empleados where emp_id=200;
 insert into empleados value(null,"fernando","torres",35136932,1131510849,"mail1@example.com","nando90","delfina",1);
 insert into empleados value(null,"juan","lopez",35136932,1131510849,"mail2@example.com","juan","1234",2);
 
@@ -47,7 +47,8 @@ dro_componentes varchar (60),
 dro_dosis float  
  );
 select*from droga;
-drop table productos;
+-- drop table productos;
+
 create table productos(
 prod_id int(6) primary key,
 prod_marca varchar(40),
@@ -72,3 +73,28 @@ emp_id int(4),
 foreign key (emp_id) references empleados (emp_id),
 foreign key (prod_id) references productos(prod_id)
 );
+
+
+create table ventas (
+vent_id int (10) auto_increment primary key,
+vent_fecha datetime,
+vent_total float,
+emp_id int,
+foreign key (emp_id) references empleados(emp_id)
+);
+
+
+create table detalles_venta (
+dventa_id int(10) auto_increment primary key,
+dventa_cantidad int (5),
+dventa_precio float,
+dventa_subtotal float,
+vent_id int (10),
+prod_id int (6),
+foreign key (vent_id) references ventas (vent_id),
+foreign key (prod_id) references productos (prod_id)
+);
+
+
+
+

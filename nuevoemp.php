@@ -16,7 +16,8 @@
   </div>
   <?php
   }
-    include "header.php";
+    include_once "header.php";
+   
 ?>
 
 <html>
@@ -104,7 +105,7 @@
                 <div class="row">
                     <form action="carga.php">
                         <div class="row">
-                            <div class="col-4" style="width: unset;"><input type=number name=id placeholder="Numero Empleado" required></div>
+                            <!-- <div class="col-4" style="width: unset;"><input type=number name=id placeholder="Numero Empleado" required></div> -->
                             <div class="col-4" style="width: unset;"><input type=text name=nom placeholder="Nombre" required></div>
                             <div class="col-4" style="width: unset;"><input type=text name=ape placeholder="Apellido" required></div>
                             <div class="col-3" style="width: unset;"><input type=number name=dni placeholder="DNI" required></div>
@@ -122,10 +123,12 @@
                     </form>
 </div>
 <?php
-require "funciones.php";
+require_once "funciones.php";
+require_once 'modif.php';
+
 $conn = conectar();
 if(isset($_GET['modif'])){
-require "modif.php";
+require_once "modif.php";
 $dat=$_GET['dato'];
 modif_emp($dat);
 }
@@ -155,7 +158,7 @@ $ape=$_GET['ape'];
 $sql="SELECT * FROM empleados
 INNER JOIN rol on empleados.rol_id=rol.rol_id
  order by emp_id asc";
-require "funciones.php";
+require_once "funciones.php";
 $conn = conectar();
 $resulset=mysqli_query($conn,$sql);
  if(mysqli_num_rows($resulset)>0){
