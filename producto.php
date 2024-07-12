@@ -90,30 +90,34 @@
       <div class="container p-3">
         <div class="row">
           <div class="col12">
-              
-              <div class="col-sm-12">
-    <?php if(isset($_SESSION['mensaje'])){ ?>
-        <div class="alert alert-<?= $_SESSION['tipo_mensaje']; ?> alert-dismissible fade show" role="alert">
-            <?= $_SESSION['mensaje']; ?>
-            <a href=""> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-top: 20px;padding: unset;"></button></a>
-        </div>
-        <?php unset($_SESSION['mensaje']); ?>
-    <?php } ?>
-</div>
-            <h1 style="margin-left: 434px;">Nuevo Producto </h1>
+            <div class="col-sm-12">
+              <?php 
+                if(isset($_SESSION['mensaje'])){ ?>
+                  <div class="alert alert-<?= $_SESSION['tipo_mensaje']; ?> alert-dismissible fade show" role="alert">
+                  <?= $_SESSION['mensaje']; ?>
+                  <a href=""> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-top: 20px;padding: unset;"></button></a>
+            </div>
+            <?php unset($_SESSION['mensaje']); ?>
+            <?php } ?>
+          </div>
+          <div class="d-flex justify-content-center">
+            <h1>Nuevo Producto </h1>
           </div>
         </div>
+      </div>
 
         
         <div class="row">
-          <form action="alta_prod.php">
+          <form action="alta_prod.php" class="form-control">
 
             <div class="row">
-                <div class="col-4" style="width: unset;"><input type=number name=id placeholder="Id Producto" required></div>
-                <div class="col-4" style="width: unset;"><input type=text name=marca placeholder="Marca" required></div>
-                <div class="col-4" style="width: unset;"><input type=text name=min placeholder="Stock Minimo" required></div>
-                <div class="col-3" style="width: unset;"><input type=number name=comp placeholder="Comprimidos" required></div>
-                <div class="col-3" style="width: unset;"><input type=number name=pre placeholder="Precio" required></div>
+              <div class="input-group mb-3">
+                <input class="form-control g-3" type=number name=id placeholder="Id Producto" required>
+                <input class="form-control g-3" type=text name=marca placeholder="Marca" required>
+                <input class="form-control" type=text name=min placeholder="Stock Minimo" required></div>
+                <input class="form-control" type=number name=comp placeholder="Comprimidos" required></div>
+                <input class="form-control" type=number name=pre placeholder="Precio" required></div> 
+              </div>
             </div>
             
             <?php
