@@ -2,7 +2,7 @@ create database farmacia;
 -- drop database farmacia;
 use farmacia;
 
-drop table rol CASCADE;
+-- drop table rol CASCADE;
 create table rol(
 rol_id int(1) primary key,
 rol_desc varchar(20)
