@@ -152,14 +152,15 @@ include_once "header.php";
                     <table class="table table-dark">
                         <thead>
                             <tr>
-                                <th>Empleado ID</th>
+                                <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>DNI</th>
                                 <th>Teléfono</th>
+                                <th>Email</th>
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
-                                <th>Tipo de Usuario</th>
+                                <th>Rol</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -172,6 +173,7 @@ include_once "header.php";
                                     <td><?php echo $fila["emp_ape"] ?></td>
                                     <td><?php echo $fila["emp_dni"] ?></td>
                                     <td><?php echo $fila["emp_tel"] ?></td>
+                                    <td><?php echo $fila["emp_email"] ?></td>
                                     <td><?php echo $fila["emp_usu"] ?></td>
                                     <td><?php echo $fila["emp_pass"] ?></td>
                                     <td><?php echo $fila["rol_desc"] ?></td>

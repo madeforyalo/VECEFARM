@@ -1,6 +1,9 @@
 <?php
+require_once "funciones.php";
+$conn = conectar();
+
 function modif($dato){
-require_once "funciones.php";  // cambie el   require "conect.php"; 
+  $conn = conectar();   
 $sql="SELECT * FROM lotes
 INNER JOIN productos on lotes.prod_id=productos.prod_id
 INNER JOIN empleados on lotes.emp_id=empleados.emp_id
@@ -35,7 +38,7 @@ if(mysqli_num_rows($res)>0){
          <tr><th>Producto</th><td><?php echo $fila["prod_marca"] ?>, <?php echo $fila["dro_componentes"] ?>   <?php echo $fila["dro_dosis"] ?></td>
          <td><select name="producto">
                                                 <?php
-                                          require_once "funciones.php";
+                                          $conn = conectar();
                                           $pro="SELECT * FROM productos INNER JOIN droga on productos.droga_id=droga.droga_id";
                                         
                                           $res=mysqli_query($conn,$pro);
@@ -75,7 +78,7 @@ if(mysqli_num_rows($res)>0){
 } 
 
 function modif_dro($dato){
-  require_once "funciones.php";     
+  $conn = conectar();   
 $sql="SELECT*FROM droga WHERE droga_id='$dato'";
 
 $res=mysqli_query($conn,$sql);
@@ -119,7 +122,7 @@ if(mysqli_num_rows($res)>0){?>
 }
 
 function modif_prod($dato){
-  require_once "funciones.php";     
+  $conn = conectar();     
 $sql="SELECT*FROM productos 
 INNER JOIN laboratorios on productos.lab_id=laboratorios.lab_id
 INNER JOIN droga on productos.droga_id=droga.droga_id
@@ -155,7 +158,7 @@ if(mysqli_num_rows($res)>0){ ?>
          <tr><th>droga</th><td> <?php echo $fila["dro_componentes"] ?>   <?php echo $fila["dro_dosis"] ?></td>
          <td><select name="dro">
                                                 <?php
-                                          require_once "funciones.php";
+                                         $conn = conectar();
                                           $pro="SELECT * FROM  droga  ";
                                         
                                           $res=mysqli_query($conn,$pro);
@@ -181,7 +184,7 @@ if(mysqli_num_rows($res)>0){ ?>
 
 <?php
 
-require_once "funciones.php";     
+$conn = conectar();    
 $sql="SELECT*FROM productos 
 INNER JOIN laboratorios on productos.lab_id=laboratorios.lab_id
 INNER JOIN droga on productos.droga_id=droga.droga_id
@@ -193,7 +196,7 @@ if(mysqli_num_rows($res)>0){ ?>
          <tr><th>Laboratorios</th><td><?php echo $fila["lab_nombre"] ?> </td>
          <td><select name="lab">
                                                      <?php
-                                          require_once "funciones.php";
+                                        $conn = conectar();
                                           $la="SELECT * FROM  laboratorios";
                                         
                                           $lab=mysqli_query($conn,$la);
@@ -233,7 +236,7 @@ if(mysqli_num_rows($res)>0){ ?>
 }
 
 function modif_lab($id){
-  require_once "funciones.php";     
+  $conn = conectar();     
 $sql="SELECT*FROM laboratorios WHERE lab_id='$id'";
 
 $res=mysqli_query($conn,$sql);
@@ -268,7 +271,7 @@ if(mysqli_num_rows($res)>0){?>
 }
 
 function modif_emp($id){
-  require_once "funciones.php"; 
+  $conn = conectar(); 
    
 $sql="SELECT*FROM empleados WHERE emp_id='$id'";
 
@@ -276,7 +279,7 @@ $res=mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($res)>0){?>
 
- <br><br><br><br><br><br><br><br>
+ <br><br>
  <div style="height: 465px; overflow-y: scroll;">
  <form style="text-align:center;overflow-y: scroll;">
      <table class="table table-dark table-sm" style="width:600px;margin:auto;">
@@ -299,6 +302,9 @@ if(mysqli_num_rows($res)>0){?>
          <tr><th>Telefono</th><td><?php echo $fila["emp_tel"] ?></td>                        
          <td><input type=text  name=emp_tel value="<?php echo($fila['emp_tel'])?>" required style="width:115px;height:50%;"></td></tr>
          
+         <tr><th>Telefono</th><td><?php echo $fila["emp_email"] ?></td>                        
+         <td><input type=text  name=emp_email value="<?php echo($fila['emp_email'])?>" required style="width:115px;height:50%;"></td></tr>
+
          <tr><th>Usuario</th><td><?php echo $fila["emp_usu"] ?></td>                        
          <td><input type=text  name=emp_usu value="<?php echo($fila['emp_usu'])?>" required style="width:110px;height:50%;"></td></tr>
          
@@ -318,7 +324,7 @@ if(mysqli_num_rows($res)>0){ ?>
          <tr><th>Tipo de Usuario</th><td> <?php echo $fila["rol_desc"] ?></td>
          <td><select name="rol">
                                                 <?php
-                                          require_once "funciones.php";
+                                          $conn = conectar();
                                           $pro="SELECT * FROM rol";
                                         
                                           $res=mysqli_query($conn,$pro);
