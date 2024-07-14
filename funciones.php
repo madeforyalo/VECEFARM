@@ -196,6 +196,21 @@ function act_prod() // Actualización Producto Admin
     }
 };
 
+// function act_pass(){
+//     $pass = $_GET['password-input'];
+//     $conn = conectar();
+//     $sql="SELECT * FROM empleados where emp_id='$id'";
+
+//     $resulset=mysqli_query($conn,$sql);
+
+//     $registro=mysqli_fetch_assoc($resulset);
+
+//     if ($pass == $registro['emp_pass']){
+//         $_SESSION['mensaje'] = 'El password no puede ser igual al anterior';
+//         $_SESSION['tipo_mensaje'] = 'danger';}
+
+// }
+
 function al_emp_lote() // Alta Lote Empleado
 {
     if (isset($_GET['producto'])) {
