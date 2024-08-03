@@ -291,32 +291,37 @@ function al_emp_lote() // Alta Lote Empleado
     }
 };
 
-function alta_lab() // Alta Lab Admin
-{
-    $id = $_GET['id'];
-    $lab = $_GET['lab'];
+function alta_lab($nombre) {
     $conn = conectar();
-
-    $SQL = "INSERT INTO laboratorios(lab_id,lab_nombre) values('$id','$lab')";
-
-    $resulset = mysqli_query($conn, $SQL);
-
-
+    $lab = $nombre;
+    
+    $sql= "SELECT * FROM laboratorios WHERE lab_nom = '$lab'";
+    $resulset = mysqli_query($conn, $sql);
     if (mysqli_affected_rows($conn) > 0) {
+        $SQL1 = "INSERT INTO laboratorios (lab_id, lab_nombre) VALUES (NULL, '$lab')";
+        $resulset1 = mysqli_query($conn, $SQL1);
 
-        $_SESSION['mensaje'] = "El laboratorio $lab fue cargado con exito";
-        $_SESSION['tipo_mensaje'] = 'success';
-        if ($resulset) {
-            header("location: laboratorio.php");
+        if (mysqli_affected_rows($conn) > 0) {
+            $_SESSION['mensaje'] = "El laboratorio $nombre fue cargado con éxito";
+            $_SESSION['tipo_mensaje'] = 'success';
+            if ($resulset1) {
+                header("Location: laboratorio.php");
+            }
+        } else {
+            $_SESSION['mensaje'] = "No se pudo cargar el laboratorio $nombre";
+            $_SESSION['tipo_mensaje'] = 'danger';
+            if ($resulset1) {
+                header("Location: laboratorio.php");
+            }
         }
-    } else {
-        $_SESSION['mensaje'] = "No se pudo cargar el laboratorio $lab";
-        $_SESSION['tipo_mensaje'] = 'danger';
+    }else{
+        $_SESSION['mensaje'] = "El laboratorio con el nombre $nombre ya existe";
+        $_SESSION['tipo_mensaje'] = 'warning';
         if ($resulset) {
-            header("location: laboratorio.php");
+            header("Location: laboratorio.php");
         }
     }
-};
+}
 
 function alta_lote() // Alta Lote Admin
 {

@@ -18,6 +18,7 @@
   }
 
   include "header.php";
+  require "funciones.php";
 ?>
 
 <html>
@@ -84,46 +85,49 @@
         </div>
     </div>
 
-    <div class="b-example-divider b-example-vr"></div>
-
     <div class="container p-3">
-              <div class="row">
-                  <div class="col12"> 
-                  <div class="col-sm-12">
-    <?php if(isset($_SESSION['mensaje'])){ ?>
-        <div class="alert alert-<?= $_SESSION['tipo_mensaje']; ?> alert-dismissible fade show" role="alert">
-            <?= $_SESSION['mensaje']; ?>
-            <a href=""> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-top: 20px;padding: unset;"></button></a>
+      <div class="row">
+        <div class="col12"> 
+          <div class="col-sm-12">
+            <?php if(isset($_SESSION['mensaje'])){ ?>
+              <div class="alert alert-<?= $_SESSION['tipo_mensaje']; ?> alert-dismissible fade show" role="alert">
+                <?= $_SESSION['mensaje']; ?>
+                <a href=""> <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-top: 20px;padding: unset;"></button></a>
+              </div>
+              <?php unset($_SESSION['mensaje']); ?>
+            <?php } ?>
+          </div>
+            <h1 class="d-flex justify-content-center mb-4">Nuevo Laboratorio </h1>
         </div>
-        <?php unset($_SESSION['mensaje']); ?>
-    <?php } ?>
-</div>
-                  <h1 style="margin-left: 434px;padding: 31px;">Nuevo Laboratorio </h1>
-                  </div>
-              </div>
+      </div>
               
-              <div class="row">
-                  <form action="alta_lab.php">
-                    <div class="row">
-                        <div class="col-6" style="width: unset;"><input type=number name=id placeholder="ID Laboratorio" required></div>
-                        <div class="col-6" style="width: unset;"><input type=text name=lab placeholder="Nombre" required></div>
-                    </div>
-                      
-                    <button class="btn-info" type="submit">Alta Laboratorio</button>
-                  </form>
-              </div>
-               <?php 
-if(isset($_GET['modif'])){
-require "modif.php";
-$id=$_GET['dato'];
-modif_lab($id);
-}
- 
- if(isset($_GET['conf'])){
-$id=$_GET['conf'];
-$nom=$_GET['dato'];   
+      <div class="row border col-6 justify-content-center">
+        <form action="" class="justify-content-center">
+          <div class="form-group mt-3 mb-2 mx-sm-3">
+            <label for="NombreLaboratorio">Nombre</label>
+            <input type=text class="form-control" name=lab placeholder="Nombre" id="NombreLaboratorio" required>
+          </div>
+          <button class="btn btn-primary mt-3 mb-2 mx-sm-3" type="submit" name="btnAlta">Alta Laboratorio</button>
+        </form>
+      </div>
+  <?php 
 
-    ?>
+    if(isset($btnAlta)){ 
+      alta_lab($_GET['lab']);
+      // unset($_SESSION['mensaje']);
+    }
+
+    if(isset($_GET['modif'])){
+    require "modif.php";
+    $id=$_GET['dato'];
+    modif_lab($id);
+    }
+    
+    if(isset($_GET['conf'])){
+    $id=$_GET['conf'];
+    $nom=$_GET['dato'];   
+
+  ?>
     <div class="container p-5 my-5 bg-danger text-center mx-auto  text-white">
     <form>
      <?php
@@ -143,23 +147,22 @@ $nom=$_GET['dato'];
 <?php
 }
 
- require "funciones.php";
- $conn = conectar();
-$sql="SELECT * FROM laboratorios"; 
-$resulset=mysqli_query($conn,$sql);
- if(mysqli_num_rows($resulset)>0){
+  $conn = conectar();
+  $sql="SELECT * FROM laboratorios"; 
+  $resulset=mysqli_query($conn,$sql);
+  if(mysqli_num_rows($resulset)>0){
  
      
      
 ?>                      
 <div style="height: 465px; overflow-y: scroll;">
-<table class="table table-dark" style="width:500px;margin:auto;">
+<table class="table table-striped table-dark justify-content-center mt-4">
     <thead>
         <tr>
-            <th>ID Laboratorio</th>
+            <th>ID</th>
             <th>Nombre</th>
-            <th></th>
-            <th></th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
     
 
@@ -170,7 +173,7 @@ $resulset=mysqli_query($conn,$sql);
         <tr>
             <td><?php echo $fila["lab_id"] ?></td>
             <td><?php echo $fila["lab_nombre"] ?></td>
-            <td><a href=laboratorio.php?modif=<?php ?>&&dato=<?php echo $fila["lab_id"]?>><i class="fa-solid fa-pen-to-square" style="color: #eff1f6;"></i></a></td>   
+            <td><a href=laboratorio.php?dato="<?php echo $fila["lab_id"]?>"><i class="fa-solid fa-pen-to-square" style="color: #ffff00;"></i></a></td>   
             
     <td><a href=laboratorio.php?conf=<?php echo $fila["lab_id"] ?>&&dato=<?php echo $fila["lab_nombre"]?>><i class="fa-solid fa-trash " style="color: #f50505;" ></i></a></td>
             
@@ -187,7 +190,7 @@ $resulset=mysqli_query($conn,$sql);
 </table>
 </div>
 <?php
-}else{ echo"<br><br><h1 style= text-align:center;color:red;>Laboratorios No cargados</h1>"; }
+}else{ echo"<h1 class='d-flex justify-content-center mt-5'>No hay laboratorios cargados</h1>"; }
 ?>
 </div>
   </main>
