@@ -102,7 +102,7 @@
       </div>
               
       <div class="row border col-6 justify-content-center">
-        <form method="POSTlaboratorio.php" method="POST" class="justify-content-center">
+        <form action="laboratorio.php" method="POST" class="justify-content-center">
             <div class="form-group mt-3 mb-2 mx-sm-3">
                 <label for="NombreLaboratorio">Nombre</label>
                 <input type="text" class="form-control" name="lab" placeholder="Nombre" id="NombreLaboratorio" required>
