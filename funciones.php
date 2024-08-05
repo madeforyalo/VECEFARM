@@ -290,6 +290,7 @@ function al_emp_lote() // Alta Lote Empleado
         header("location: /emp_lote.php");
     }
 };
+
 function alta_lab($nombre) {
     // Conectar a la base de datos
     $conn = conectar();
@@ -312,6 +313,8 @@ function alta_lab($nombre) {
     $sql->bind_param("s", $nombre);
     $sql->execute();
     $result = $sql->get_result();
+
+    $sql_insert = null; // Inicializar la variable $sql_insert
 
     if ($result->num_rows > 0) {
         // Si el laboratorio ya existe
@@ -337,15 +340,19 @@ function alta_lab($nombre) {
         }
     }
 
-    // Cerrar conexiones y liberaciones de recursos
+    // Cerrar conexiones y liberar recursos
     $sql->close();
-    $sql_insert->close();
+    if ($sql_insert !== null) {
+        $sql_insert->close();
+    }
     $conn->close();
 
     // Redirigir a la página laboratorio.php
     // header("Location: laboratorio.php");
     // exit();
 }
+
+
 
 
 
