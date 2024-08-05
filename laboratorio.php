@@ -1,9 +1,10 @@
 <?php
   ob_start();
-
+  
   session_start();
   if(isset($_SESSION['id']) && $_SESSION['tipoUsuario']==1){
   //todo ok
+
   }
  else{?>
     <div style="text-align:center;">
@@ -17,9 +18,11 @@
   </div>
   <?php
   }
+
   include "header.php";
   include_once "funciones.php";
 ?>
+
 <html>
   <body>  
 
@@ -101,14 +104,12 @@
       </div>
               
       <div class="row border col-6 justify-content-center">
-        <form action="laboratorio.php" method="POST" class="justify-content-center needs-validation" novalidate>
+        <form action="laboratorio.php" method="POST" class="justify-content-center">
             <div class="form-group mt-3 mb-2 mx-sm-3">
                 <label for="NombreLaboratorio">Nombre</label>
                 <input type="text" class="form-control" name="lab" placeholder="Nombre" id="NombreLaboratorio" required>
-                <div class="valid-feedback">Ok</div>
-                <div class="invalid-feedback">Ingrese nombre de laboratorio</div>
-              </div>
-            <button class="btn btn-primary mt-3 mb-2 mx-sm-3" type="submit"  name="btnAlta" id="btnAlta">Alta Laboratorio</button>
+            </div>
+            <button class="btn btn-primary mt-3 mb-2 mx-sm-3" type="submit" name="btnAlta">Alta Laboratorio</button>
         </form>
       </div>
 
@@ -207,20 +208,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    <?php
-      require "validaciondecampos.js";
-    ?>
-  </script>
-  <script>
-      function recargarPagina() {
-        location.reload();
-      }
 
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('btnAlta').addEventListener('click', recargarPagina);
-      });
-    </script>
       
   <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://getbootstrap.com/docs/5.3/examples/sidebars/sidebars.js"></script>
