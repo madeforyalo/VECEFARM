@@ -18,7 +18,7 @@
   }
 
   include "header.php";
-  require "funciones.php";
+  include_once "funciones.php";
 ?>
 
 <html>
@@ -102,22 +102,30 @@
       </div>
               
       <div class="row border col-6 justify-content-center">
-        <form method="POST" class="justify-content-center">
-          <div class="form-group mt-3 mb-2 mx-sm-3">
-            <label for="NombreLaboratorio">Nombre</label>
-            <input type=text class="form-control" name=lab placeholder="Nombre" id="NombreLaboratorio" required>
-          </div>
-          <button class="btn btn-primary mt-3 mb-2 mx-sm-3" type="submit" name="btnAlta">Alta Laboratorio</button>
+        <form method="POSTlaboratorio.php" method="POST" class="justify-content-center">
+            <div class="form-group mt-3 mb-2 mx-sm-3">
+                <label for="NombreLaboratorio">Nombre</label>
+                <input type="text" class="form-control" name="lab" placeholder="Nombre" id="NombreLaboratorio" required>
+            </div>
+            <button class="btn btn-primary mt-3 mb-2 mx-sm-3" type="submit" name="btnAlta">Alta Laboratorio</button>
         </form>
       </div>
+
   <?php 
+  include_once "funciones.php";
 
-    if (isset($_POST['btnAlta'])) {
-      $lab = $_POST['lab'];
-      alta_lab($lab);
-      header("Refresh:0");
-    }
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['btnAlta'])) {
+    if (isset($_POST['lab'])) {
+        $nombre_lab = $_POST['lab'];
+        alta_lab($nombre_lab);
+    } else {
+        $_SESSION['mensaje'] = "Por favor, ingrese el nombre del laboratorio.";
+        $_SESSION['tipo_mensaje'] = 'warning';
+        header("Location: laboratorio.php");
+        exit();
+    } }
 
+    
     if(isset($_GET['modif'])){
     require "modif.php";
     $id=$_GET['dato'];

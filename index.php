@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 <!doctype html>
 <html lang="es" data-bs-theme="dark">
@@ -112,6 +114,18 @@ session_start();
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+
+    #caps-lock-message {
+            display: none;
+            color: white;
+            font-weight: 200;
+            margin-top: 5px;
+            /* display: flex; */
+            align-items: center;
+        }
+        .capslock-icon {
+            margin-right: 2px;
+        }
   </style>
 
 </head>
@@ -130,41 +144,38 @@ session_start();
       } ?>
     </div>
 
-    <form action=loggin.php class="needs-validation" novalidate>
-      <img class="mb-4" src="imagenes/vecefarm.png" alt="" width="300" height="auto">
+    <div class="container">
+        <form action="loggin.php" class="needs-validation" novalidate method="POST">
+            <img class="mb-4" src="imagenes/vecefarm.png" alt="" width="300" height="auto">
 
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="usuario" required>
-        <label for="floatingInput">Usuario</label>
-        <div class="valid-feedback">
-          Ok
-        </div>
-        <div class="invalid-feedback">
-          ingrese usuario
-        </div>
-      </div>
-      <?php
-      
-      ?>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contra" required>
-        <label for="floatingPassword">Password</label>
-        <div class="valid-feedback">
-          Ok
-        </div>
-        <div class="invalid-feedback">
-          ingrese contraseña
-        </div>
-      </div>
-      <?php
-      
-      ?>
-      <div class="form-check text-start my-3">
-        <a href="olvidePass.php" class="link-opacity-100-hover">Olvidé mi contraseña</a>
-      </div>
-      <button class="btn btn-primary w-100 py-2" type="submit" value="Loggin" name="aceptar">Ingresar</button>
-    </form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="usuario" required>
+                <label for="floatingInput">Usuario</label>
+                <div class="valid-feedback">Ok</div>
+                <div class="invalid-feedback">Ingrese usuario</div>
+            </div>
 
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="contra" required>
+                <label for="floatingPassword">Password</label>
+                <div class="valid-feedback">Ok</div>
+                <div class="invalid-feedback">Ingrese contraseña</div>
+            </div>
+
+            <div id="caps-lock-message">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capslock-fill capslock-icon" viewBox="0 0 16 16">
+                    <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1z"/>
+                </svg>
+                Bloq Mayus está activado.
+            </div>
+
+            <div class="form-check text-start my-3">
+                <a href="olvidePass.php" class="link-opacity-100-hover">Olvidé mi contraseña</a>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2" type="submit" value="Loggin" name="aceptar">Ingresar</button>
+        </form>
+    </div>
   </main>
 
   <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -173,6 +184,9 @@ session_start();
       require "validaciondecampos.js";
     ?>
   </script>
+   <script src="script.js"></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   
 </body>
 
 </html>
