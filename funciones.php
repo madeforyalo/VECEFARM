@@ -348,8 +348,8 @@ function alta_lab($nombre) {
     $conn->close();
 
     // Redirigir a la página laboratorio.php
-    header("Location: laboratorio.php");
-    exit();
+    // header("Location: laboratorio.php");
+    // exit();
 }
 
 
