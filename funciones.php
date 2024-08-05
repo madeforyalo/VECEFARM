@@ -353,10 +353,6 @@ function alta_lab($nombre) {
 }
 
 
-
-
-
-
 function alta_lote() // Alta Lote Admin
 {
     if (isset($_GET['producto'])) {
