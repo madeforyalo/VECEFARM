@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 <!doctype html>
 <html lang="es" data-bs-theme="dark">
@@ -116,13 +118,13 @@ session_start();
     #caps-lock-message {
             display: none;
             color: white;
-            font-weight: bold;
-            margin-top: 10px;
-            display: flex;
+            font-weight: 200;
+            margin-top: 5px;
+            /* display: flex; */
             align-items: center;
         }
         .capslock-icon {
-            margin-right: 5px;
+            margin-right: 2px;
         }
   </style>
 
@@ -160,15 +162,15 @@ session_start();
                 <div class="invalid-feedback">Ingrese contraseña</div>
             </div>
 
-            <div class="form-check text-start my-3">
-                <a href="olvidePass.php" class="link-opacity-100-hover">Olvidé mi contraseña</a>
-            </div>
-
             <div id="caps-lock-message">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capslock-fill capslock-icon" viewBox="0 0 16 16">
                     <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1z"/>
                 </svg>
                 Bloq Mayus está activado.
+            </div>
+
+            <div class="form-check text-start my-3">
+                <a href="olvidePass.php" class="link-opacity-100-hover">Olvidé mi contraseña</a>
             </div>
 
             <button class="btn btn-primary w-100 py-2" type="submit" value="Loggin" name="aceptar">Ingresar</button>

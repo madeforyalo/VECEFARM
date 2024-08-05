@@ -1,4 +1,3 @@
-//funcion mayusculas activadas
 document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('floatingPassword');
     const capsLockMessage = document.getElementById('caps-lock-message');
@@ -12,7 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Verificar el estado de Caps Lock al cargar la página
+    function initialCapsLockCheck() {
+        const e = new KeyboardEvent('keydown', {key: 'CapsLock'});
+        checkCapsLock(e);
+    }
+
     passwordInput.addEventListener('keydown', checkCapsLock);
     passwordInput.addEventListener('keyup', checkCapsLock);
+
+    //verifica si bloq mayus esta activo al iniciar o actualizar la pagina.
+    initialCapsLockCheck();
+    
 });
+
 
