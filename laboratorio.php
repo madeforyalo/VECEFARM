@@ -102,7 +102,7 @@
       </div>
               
       <div class="row border col-6 justify-content-center">
-        <form action="" class="justify-content-center">
+        <form method="POST" class="justify-content-center">
           <div class="form-group mt-3 mb-2 mx-sm-3">
             <label for="NombreLaboratorio">Nombre</label>
             <input type=text class="form-control" name=lab placeholder="Nombre" id="NombreLaboratorio" required>
@@ -112,9 +112,10 @@
       </div>
   <?php 
 
-    if(isset($btnAlta)){ 
-      alta_lab($_GET['lab']);
-      // unset($_SESSION['mensaje']);
+    if (isset($_POST['btnAlta'])) {
+      $lab = $_POST['lab'];
+      alta_lab($lab);
+      header("Refresh:0");
     }
 
     if(isset($_GET['modif'])){
