@@ -290,38 +290,65 @@ function al_emp_lote() // Alta Lote Empleado
         header("location: /emp_lote.php");
     }
 };
-
 function alta_lab($nombre) {
+    // Conectar a la base de datos
     $conn = conectar();
-    $lab = $nombre;
-    
-    $sql= "SELECT * FROM laboratorios WHERE lab_nom = '$lab'";
-    $resulset = mysqli_query($conn, $sql);
-    if (mysqli_affected_rows($conn) > 0) {
-        $SQL1 = "INSERT INTO laboratorios (lab_id, lab_nombre) VALUES (NULL, '$lab')";
-        $resulset1 = mysqli_query($conn, $SQL1);
+    if (!$conn) {
+        $_SESSION['mensaje'] = "Error de conexión a la base de datos";
+        $_SESSION['tipo_mensaje'] = 'danger';
+        header("Location: laboratorio.php");
+        exit();
+    }
 
-        if (mysqli_affected_rows($conn) > 0) {
+    // Preparar y ejecutar la consulta para verificar si el laboratorio ya existe
+    $sql = $conn->prepare("SELECT * FROM laboratorios WHERE lab_nombre = ?");
+    if (!$sql) {
+        $_SESSION['mensaje'] = "Error al preparar la consulta: " . $conn->error;
+        $_SESSION['tipo_mensaje'] = 'danger';
+        header("Location: laboratorio.php");
+        exit();
+    }
+    
+    $sql->bind_param("s", $nombre);
+    $sql->execute();
+    $result = $sql->get_result();
+
+    if ($result->num_rows > 0) {
+        // Si el laboratorio ya existe
+        $_SESSION['mensaje'] = "El laboratorio con el nombre $nombre ya existe";
+        $_SESSION['tipo_mensaje'] = 'warning';
+    } else {
+        // Si el laboratorio no existe, insertar uno nuevo
+        $sql_insert = $conn->prepare("INSERT INTO laboratorios (lab_nombre) VALUES (?)");
+        if (!$sql_insert) {
+            $_SESSION['mensaje'] = "Error al preparar la consulta de inserción: " . $conn->error;
+            $_SESSION['tipo_mensaje'] = 'danger';
+            header("Location: laboratorio.php");
+            exit();
+        }
+        
+        $sql_insert->bind_param("s", $nombre);
+        if ($sql_insert->execute()) {
             $_SESSION['mensaje'] = "El laboratorio $nombre fue cargado con éxito";
             $_SESSION['tipo_mensaje'] = 'success';
-            if ($resulset1) {
-                header("Location: laboratorio.php");
-            }
         } else {
             $_SESSION['mensaje'] = "No se pudo cargar el laboratorio $nombre";
             $_SESSION['tipo_mensaje'] = 'danger';
-            if ($resulset1) {
-                header("Location: laboratorio.php");
-            }
-        }
-    }else{
-        $_SESSION['mensaje'] = "El laboratorio con el nombre $nombre ya existe";
-        $_SESSION['tipo_mensaje'] = 'warning';
-        if ($resulset) {
-            header("Location: laboratorio.php");
         }
     }
+
+    // Cerrar conexiones y liberaciones de recursos
+    $sql->close();
+    $sql_insert->close();
+    $conn->close();
+
+    // Redirigir a la página laboratorio.php
+    header("Location: laboratorio.php");
+    exit();
 }
+
+
+
 
 function alta_lote() // Alta Lote Admin
 {
