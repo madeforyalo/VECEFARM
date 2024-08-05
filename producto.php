@@ -74,8 +74,8 @@ include "header.php";
                     <!-- <input type="number" id="id" name="id" class="form-control" placeholder="Id Producto" required> -->
                 </div>
                 <div class="form-group">
-                    <label for="marca">Laboratorio</label>
-                    <input type="text" id="marca" name="marca" class="form-control" placeholder="Laboratorio" required>
+                    <label for="marca">Marca</label>
+                    <input type="text" id="marca" name="marca" class="form-control" placeholder="Marca" required>
                 </div>
                 <div class="form-group">
                     <label for="min">Stock Mínimo</label>
