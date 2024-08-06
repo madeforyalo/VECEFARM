@@ -237,15 +237,15 @@ if(mysqli_num_rows($res)>0){ ?>
 
 function modif_lab($id){
   $conn = conectar();     
-$sql="SELECT*FROM laboratorios WHERE lab_id='$id'";
+  $sql="SELECT * FROM laboratorios WHERE lab_id='$id'";
 
-$res=mysqli_query($conn,$sql);
+  $res=mysqli_query($conn,$sql);
 
-if(mysqli_num_rows($res)>0){?>
+  if(mysqli_num_rows($res)>0){?>
 
  <br><br><br><br><br><br>
  <form style="text-align:center;">
-     <table class="table table-dark table-sm" style="width:600px;margin:auto;">
+     <table class="table table-striped table-dark justify-content-center mt-4">
          <thead>
          <tr><th>Dato</th><th>Actual</th><th>Modificacion</th></tr>
          </thead>
@@ -253,8 +253,8 @@ if(mysqli_num_rows($res)>0){?>
          ?>
         <tbody>
             <input type=hidden name=lab_id value=<?php echo $fila["lab_id"] ?>> 
-         <tr><th>Laboratorio</th><td><?php echo $fila["lab_nombre"] ?></td>                        
-         <td><input type=text  name=lab_nombre value="<?php echo($fila['lab_nombre'])?>" required style="width:70px;height:50%;"></td></tr>
+         <tr><th>Laboratorio</th><td><?php echo $fila["lab_nombre"]; ?></td>                        
+         <td class="col-3"><input type=text class="form-control" name=lab_nombre value="<?php echo($fila['lab_nombre']); ?>" required></td></tr>
         
      </tbody>
      <?php } ?>

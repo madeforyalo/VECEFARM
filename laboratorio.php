@@ -127,7 +127,7 @@ include_once "funciones.php";
 
 
       if (isset($_GET['modif'])) {
-        require "modif.php";
+        require_once "modif.php";
         $id = $_GET['dato'];
         modif_lab($id);
       }
@@ -174,8 +174,8 @@ include_once "funciones.php";
                 <tr>
                   <td><?php echo $fila["lab_id"] ?></td>
                   <td><?php echo $fila["lab_nombre"] ?></td>
-                  <td><a href=laboratorio.php?dato="<?php echo $fila["lab_id"] ?>"><i class="fa-solid fa-pen-to-square" style="color: #ffff00;"></i></a></td>
-                  <td><a href=laboratorio.php?conf=<?php echo $fila["lab_id"] ?>&&dato=<?php echo $fila["lab_nombre"] ?>><i class="fa-solid fa-trash " style="color: #f50505;"></i></a></td>
+                  <td><a href="laboratorio.php?modif=1&&dato=<?php echo $fila["lab_id"] ?>"><i class="fa-solid fa-pen-to-square" style="color: #ffff00;"></i></a></td>
+                  <td><a href="laboratorio.php?conf=<?php echo $fila["lab_id"] ?>&&dato=<?php echo $fila["lab_nombre"] ?>"><i class="fa-solid fa-trash " style="color: #f50505;"></i></a></td>
                 </tr>
               <?php
               }
