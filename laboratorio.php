@@ -107,9 +107,9 @@ include_once "funciones.php";
         <form action="laboratorio.php" method="POST" class="justify-content-center needs-validation" novalidate>
           <div class="form-group mt-3 mb-2 mx-sm-3">
             <label for="NombreLaboratorio">Nombre</label>
-            <input type="text" class="form-control" name="lab" placeholder="Nombre" id="NombreLaboratorio" required>
+            <input type="text" class="form-control" name="lab" pattern="^(?=.*[A-Za-z])[A-Za-z0-9.,&-_]*$" placeholder="Nombre" id="NombreLaboratorio" required>
             <div class="valid-feedback">Ok</div>
-            <div class="invalid-feedback">Ingrese nombre de laboratorio</div>
+            <div class="invalid-feedback">Ingrese nombre de laboratorio valido</div>
           </div>
           <button class="btn btn-primary mt-3 mb-2 mx-sm-3" type="submit" name="btnAlta">Alta Laboratorio</button>
         </form>

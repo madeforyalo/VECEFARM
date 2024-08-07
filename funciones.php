@@ -72,10 +72,8 @@ function act_emp() // Actualizacion Empleados Admin
     }
 };
 
-function act_lab() // Actualización Laboratorio Admin
+function act_lab($id, $nom) // Actualización Laboratorio Admin
 {
-    $id = $_GET['lab_id'];
-    $nom = $_GET['lab_nombre'];
     $conn = conectar();
 
     $sql = "UPDATE laboratorios
